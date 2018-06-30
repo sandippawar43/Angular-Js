@@ -1,0 +1,7 @@
+[{"rollno":5,"name":"ryy","sub1":20,"sub2":30,"sub3":10},
+{"rollno":20,"name":"Shyam","sub1":90,"sub2":30,"sub3":20},
+{"rollno":1,"name":"Rahul","sub1":60,"sub2":60,"sub3":20},
+{"rollno":9,"name":"Sanjay","sub1":40,"sub2":80,"sub3":40},
+{"rollno":11,"name":"vikram","sub1":50,"sub2":90,"sub3":80},
+{"rollno":18,"name":"Rohan","sub1":30,"sub2":20,"sub3":50}]
+

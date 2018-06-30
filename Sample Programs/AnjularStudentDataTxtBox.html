@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+This is the example of the $http and $scope service.
+This app loads data from "studentMarks.txt" and displays the values in text box with total percentage 
+and status of pass or fail.
+-->
+<html>
+    <head>
+        <script src ="angular.min.js" type="text/javascript"></script>
+        <script>
+            var mod = angular.module("myAppp", []);
+            mod.controller("myCont", function($scope, $http)
+            {
+                $http.get("studentMarks.txt").success(function(response)
+                {
+                    $scope.msg = response;
+                });
+
+                $scope.display = function()
+                {
+                    var sub1 = $scope.val.sub1;
+                    var sub2 = $scope.val.sub2;
+                    var sub3 = $scope.val.sub3;
+                    var total = sub1 + sub2 + sub3;
+                    var percentage = total / 300 * 100;
+                    $scope.rollNo = $scope.val.rollno;
+                    $scope.name = $scope.val.name;
+                    $scope.sub1 = sub1;
+                    $scope.sub2 = sub2;
+                    $scope.sub3 = sub3;
+                    $scope.total = total;
+                    $scope.percentage = percentage;
+                    if ($scope.percentage >= 50)
+                        $scope.status = "PASS";
+                    else
+                        $scope.status = "FAIL";
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <div ng-app="myAppp" ng-controller="myCont">
+            <select ng-model="val" ng-options="b.name for b in msg" ng-change="display()"></select>
+            <br><br>
+            Roll No<input type="txt" ng-model="rollNo"><br>
+            Name <input type="txt" ng-model="name"><br>
+            Sub 1 <input type="txt" ng-model="sub1"><br>
+            Sub 2 <input type="txt" ng-model="sub2"><br>
+            Sub 3 <input type="txt" ng-model="sub3"><br>
+            Total <input type="txt" ng-model="total"><br>
+            Percentage <input type="txt" ng-model="percentage"><br>
+            Status <input type="txt" ng-model="status"> 
+        </div>
+    </body>
+</html>
