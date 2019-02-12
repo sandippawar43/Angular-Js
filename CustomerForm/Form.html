@@ -1,0 +1,53 @@
+<form [formGroup]="customerForm" (ngSubmit)="call(customerForm.value)" >
+    Id <input type="text" formControlName="id">
+    <span *ngIf="customerForm.get('id').errors && customerForm.get('id').dirty">
+        <span *ngIf="customerForm.get('id').errors.required">Please Enter the id</span>
+    </span>
+    <br/>
+    <br/>
+    Name <input type="text" formControlName="name">
+    <span *ngIf="customerForm.get('name').errors && customerForm.get('name').dirty ">
+        <span *ngIf="customerForm.get('name').errors.required">Please Enter the name</span>
+    </span>
+    <br/>
+    <br/>
+    Email <input type="text" formControlName="email">
+    <span *ngIf="customerForm.get('email').errors && customerForm.get('email').dirty ">
+            <span *ngIf="customerForm.get('email').errors.required">Please Enter the email</span>
+            <span *ngIf="customerForm.get('email').errors.email">Please enter Valid Email</span>
+
+        </span>
+    <br/>
+    <br/>
+    Mobile <input type="text" formControlName="mobile">
+    <span *ngIf="customerForm.get('mobile').errors && customerForm.get('mobile').dirty ">
+            <span *ngIf="customerForm.get('mobile').errors.required">Please Enter the mobile</span>
+            <span *ngIf="customerForm.get('mobile').errors.pattern">Enter the valid mobile</span>
+        </span>
+    <br/>
+    <br/>
+    Pin Code <input type="text" formControlName="pin">
+    <span *ngIf="customerForm.get('pin').errors && customerForm.get('pin').dirty ">
+            <span *ngIf="customerForm.get('pin').errors.required">Please Enter the 6 digit pin code</span>
+            <span *ngIf="customerForm.get('pin').errors.pattern">Please Enter the 6 digit pin code</span>
+        </span>
+    <br/>
+    <br/>
+    <input type="submit" value="submit" [disabled]="!customerForm.valid">
+</form>
+
+<table border="1">
+    <thead>
+    <tr><td>Id</td><td>Name</td><td>Email</td><td>Mobile</td><td>Pin</td></tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aa of customerFormData">
+            <td>{{aa.id}}</td>
+            <td>{{aa.name}}</td>
+            <td>{{aa.email}}</td>            
+            <td>{{aa.mobile}}</td>
+            <td>{{aa.pin}}</td>
+            <td><input type="button" value="View" (click)="viewData(aa.id)"> </td>
+        </tr>
+    </tbody>
+</table>

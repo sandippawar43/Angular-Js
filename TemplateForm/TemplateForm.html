@@ -1,0 +1,8 @@
+<form #myForm="ngForm" (ngSubmit)="call('myForm.val')">
+    Name <input type="text" [(ngModel)]="fn" name="fname" required #fname="ngModel" pattern="[a-zA-Z]">
+    <span *ngIf="fname.touched && !fname.valid">
+    <span *ngIf="fname.errors.required">Please enter the name</span>
+    <span *ngIf="fname.errors.pattern">Please enter characters only</span>
+</span>
+</form>
+<h1>Hello</h1>
