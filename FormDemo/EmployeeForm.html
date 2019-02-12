@@ -1,0 +1,44 @@
+<form [formGroup]="empForm">
+    Name <input type="text" formControlName="name">
+    <span *ngIf="empForm.get('name').errors &&  empForm.get('name').dirty">
+        <span *ngIf="empForm.get('name').errors.required">Enter the employee Name</span>
+    </span>
+    <br/>
+    <br/>
+    Email <input type="text" formControlName="email">
+    <span *ngIf="empForm.get('email').errors && empForm.get('email').dirty">
+        <span *ngIf="empForm.get('email').errors.email">Enter the valid email id</span>
+        <span *ngIf="empForm.get('email').errors.required">Enter the email id</span>
+    </span>
+    <br/>
+    <br/>
+    Address <input type="text" formControlName="address">
+    <span *ngIf="empForm.get('address').errors && empForm.get('address').dirty">
+            <span *ngIf="empForm.get('address').errors.required">Enter the Address</span>
+        </span>
+    <br/>
+    <br/>
+    Mobile <input type="text" formControlName="mobile">
+    <span *ngIf="empForm.get('mobile').errors ">
+            <span *ngIf="empForm.get('mobile').errors.pattern">Enter the valid mobile</span>
+    </span>
+    <br/>
+    <br/>
+    Password <input type="text" formControlName="password">
+    <span *ngIf="empForm.get('password').errors && empForm.get('password').hasError('minlength')">
+            <span *ngIf="empForm.get('password').errors.pattern">Enter the valid mobile</span>
+            <span *ngIf="empForm.get('rePassword').errors.minlength">Enter the min 8 charactors mobile</span>
+            
+    </span>
+    <br/>
+    <br/>
+    Confirm Password <input type="text" formControlName="rePassword">
+    <span *ngIf="empForm.get('rePassword').errors && empForm.get('rePassword').hasError('minlength') ">
+            <span *ngIf="empForm.get('rePassword').errors.pattern">Enter the valid mobile</span>
+            <span *ngIf="empForm.get('rePassword').errors.minlength">Enter the min 8 charactors mobile</span>
+    </span>
+    <br/>
+    <br/>
+    <input type="submit" [disabled]="!empForm.valid">
+
+</form>
